@@ -50,6 +50,7 @@ export default function Broadcast() {
         try {
             const response = await axios.post(`${broadcastRoute}`, {
                 "from": currentUser.userid,
+                "from_username": currentUser.username,
                 "message": message,
             });
             navigate("/");
