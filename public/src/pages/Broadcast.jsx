@@ -28,7 +28,7 @@ export default function Broadcast() {
         }
     };
     asyncFn();
-  }, []);
+  }, [navigate]);
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -48,7 +48,7 @@ export default function Broadcast() {
     if (validateForm()) {
         const { message } = values;
         try {
-            const response = await axios.post(`${broadcastRoute}`, {
+            await axios.post(`${broadcastRoute}`, {
                 "from": currentUser.userid,
                 "from_username": currentUser.username,
                 "message": message,
