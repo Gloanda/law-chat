@@ -6,18 +6,14 @@ module.exports.getBroadcastMessage = async (req, res, next) => {
     const { from, message } = req.body;
 
     const getAllContact = async () => {
-        const response = await axios.get(`http://34.28.228.30/api/contact/fauzan123`);
+        const response = await axios.get(`http://34.28.228.30/api/contact/${from}`);
         const data = await response.data;
-        console.log(data);
         return data.map(item => item.contact_id); 
       };
 
     const contactList = await getAllContact();
-    console.log(contactList);
 
     contactList.forEach(contact => {
-        console.log(contact);
-        console.log(from);
         const handleSendMessage = async ()=>{
           const sendMessage = async () => {
             const response = await axios.post(`http://localhost:8888/api/message/addmsg`,{
