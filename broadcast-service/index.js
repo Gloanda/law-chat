@@ -3,7 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const socket = require("socket.io");
 const broadcastRoutes = require("./routes/broadcastRoutes");
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json')
 
 const app = express();
 require("dotenv").config();
@@ -11,6 +12,7 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 app.use("/api/broadcast", broadcastRoutes)
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,

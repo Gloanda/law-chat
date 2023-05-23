@@ -1,6 +1,8 @@
 const broadcast = require("../models/broadcastModel");
 const axios = require('axios');
 
+require("dotenv").config();
+
 module.exports.getBroadcastMessage = async (req, res, next) => {
   try {
     const { from,from_username, message } = req.body;
@@ -36,7 +38,7 @@ module.exports.getBroadcastMessage = async (req, res, next) => {
       sender: from,
     });
 
-    if (data) return res.json({ msg: "Broadcast successfully." });
+    if (data) return res.json({ msg: `Broadcast successfully on PORT ${process.env.PORT}.` });
     else return res.json({ msg: "Failed to broadcast" });
   } catch (ex) {
     next(ex);

@@ -1,0 +1,110 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Broadcast Service API",
+    "description": "Broadcasts to Users in Contacts"
+  },
+  "host": "localhost:4530",
+  "basePath": "/api/broadcast",
+  "tags": [
+    {
+      "name": "Broadcast",
+      "description": ""
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/get/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "example": "any"
+                },
+                "from_username": {
+                  "example": "any"
+                },
+                "message": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Sender": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "number",
+          "example": 1
+        },
+        "ref": {
+          "type": "string",
+          "example": "Simon Doe"
+        },
+        "required": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "array",
+          "example": [
+            "Simon Doe",
+            "Doe Simon"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Message"
+        }
+      }
+    },
+    "Timestamp": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    }
+  }
+}
